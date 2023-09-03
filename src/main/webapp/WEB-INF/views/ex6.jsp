@@ -22,6 +22,10 @@
     <div id="textResult"></div>
     <button v-on:click="methodTest">알림테스트</button>
 </div>
+<div id="app5">
+    <div>{{message}}</div>
+    <input v-model="message">
+</div>
 <br />
 
 <script>
@@ -63,6 +67,13 @@
             reverseText : function(){
                 document.getElementById("textResult").innerText = this.message.split('').reverse().join('');
             }
+        }
+    });
+
+    var app5 = new Vue({
+        el: "#app5",
+        data: {
+            message : "양방향 테스트"
         }
     });
 </script>

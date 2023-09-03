@@ -36,4 +36,10 @@ public class MainController {
 
         return "ex5";
     }
+
+    @GetMapping("/ex6")
+    public String ex6(HttpServletRequest request){
+
+        return "ex6";
+    }
 }
