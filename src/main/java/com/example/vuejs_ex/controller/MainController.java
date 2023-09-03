@@ -24,4 +24,16 @@ public class MainController {
 
         return "ex3";
     }
+
+    @GetMapping("/ex4")
+    public String ex4(HttpServletRequest request){
+
+        return "ex4";
+    }
+
+    @GetMapping("/ex5")
+    public String ex5(HttpServletRequest request){
+
+        return "ex5";
+    }
 }
