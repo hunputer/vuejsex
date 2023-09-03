@@ -13,4 +13,10 @@ public class MainController {
         return "main";
     }
 
+    @GetMapping("/ex2")
+    public String ex2(HttpServletRequest request){
+
+        return "ex2";
+    }
+
 }
