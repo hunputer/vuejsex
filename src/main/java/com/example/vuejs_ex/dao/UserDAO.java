@@ -11,4 +11,6 @@ public interface UserDAO {
 
     List<UserVO> getUser();
 
+    int deleteUser(UserVO userVO);
+
 }

@@ -17,5 +17,9 @@ public class MainService {
         return userDAO.getUser();
     }
 
+    public int deleteUser(UserVO userVO) throws Exception{
+        return userDAO.deleteUser(userVO);
+    }
+
 
 }

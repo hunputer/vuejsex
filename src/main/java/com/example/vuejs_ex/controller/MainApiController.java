@@ -4,6 +4,7 @@ import com.example.vuejs_ex.service.MainService;
 import com.example.vuejs_ex.vo.UserVO;
 import lombok.RequiredArgsConstructor;
 import org.springframework.stereotype.Controller;
+import org.springframework.web.bind.annotation.DeleteMapping;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.ResponseBody;
@@ -24,6 +25,13 @@ public class MainApiController {
         List<UserVO> userList = mainService.getUser();
 
         return userList;
+    }
+
+    @ResponseBody
+    @DeleteMapping("/deleteUser")
+    public UserVO deleteUser(UserVO userVO) throws Exception{
+        mainService.deleteUser(userVO);
+        return userVO;
     }
 
 }

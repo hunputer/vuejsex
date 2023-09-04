@@ -7,4 +7,9 @@
         SELECT *
           FROM USER_TEST
     </select>
+
+    <delete id="deleteUser">
+        delete from user_test
+        where id = #{id}
+    </delete>
 </mapper>
