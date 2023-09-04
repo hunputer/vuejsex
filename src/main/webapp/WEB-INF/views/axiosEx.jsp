@@ -11,7 +11,7 @@
 <div id="app">
     <button v-on:click="getData">get user</button>
     <br>
-    <div v-for="(data, idx) in user">{{data.name}}{{idx+1}}</div>
+    <div v-for="(data, idx) in user" :key="data.id">{{data.name}}{{idx+1}}</div>
 </div>
 <br />
 
@@ -24,10 +24,9 @@
         methods: {
             getData(){
                 var vm = this;
-                axios.get('https://jsonplaceholder.typicode.com/users/')
+                axios.get('http://localhost:8080/service/getUser')
                     .then((result) => {
-                        console.log(result);
-                        vm.user = result.data;
+                        console.log(result.data);
                     })
                     .catch((error) => {
                         console.log(error);
