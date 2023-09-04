@@ -11,7 +11,7 @@
 <div id="app">
     <button v-on:click="getData">get user</button>
     <br>
-    <div v-for="(data, idx) in user">{{user}}</div>
+    <div v-for="(data, idx) in user">{{data.name}}{{idx+1}}</div>
 </div>
 <br />
 
