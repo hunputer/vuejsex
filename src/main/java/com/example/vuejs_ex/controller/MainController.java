@@ -42,4 +42,10 @@ public class MainController {
 
         return "ex6";
     }
+
+    @GetMapping("/axiosEx")
+    public String axiosEx(HttpServletRequest request){
+
+        return "axiosEx";
+    }
 }

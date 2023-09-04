@@ -7,8 +7,7 @@
     <script src="https://cdn.jsdelivr.net/npm/vue/dist/vue.js"></script>
 </head>
 <body>
-<div id="app">{{ message }}</div>
-<div id="app2">
+<div id="app">
     <div v-if="test=='1'">조건문테스트_1일떄 출력</div>
     <div v-elseif="test=='2'">조건문테스트_2일때 출력</div>
     <div v-else>그외 나머지 출력</div>
@@ -18,13 +17,6 @@
 <script>
     var app = new Vue({
         el: "#app",
-        data: {
-            message: "Hello Vue!",
-        }
-    });
-
-    var app2 = new Vue({
-        el: "#app2",
         data: {
             test: "2"
         }
