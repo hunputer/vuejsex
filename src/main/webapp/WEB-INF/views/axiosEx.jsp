@@ -45,7 +45,7 @@
 
 <div id="insertModal" class="white-bg" style="display:none;">
     <h4>등록창</h4>
-    <div>아이디 : <textarea id="userId"></textarea></div>
+    <div>아이디 : <textarea id="userName"></textarea></div>
     <div>나이 : <textarea id="userAge"></textarea></div>
     <button v-on:click="insertUser">등록</button>
     <button v-on:click="closeModal">닫기</button>
@@ -99,17 +99,15 @@
         },
         methods: {
             insertUser(){
-                var id = document.getElementById("userId").value;
+                var name = document.getElementById("userName").value;
                 var age = document.getElementById("userAge").value;
-                axios.delete('http://localhost:8080/service/insertUser', {
-                    params : {
-                        id : id,
-                        age : age
-                    }
-                })
+                var data = new FormData();
+                data.append("name",name);
+                data.append("age", age);
+                axios.post('http://localhost:8080/users', {"name" : name, "age" : age})
                     .then((result) => {
                         alert("등록되었습니다.")
-                        this.getUser();
+                        app.getUser();
                     })
                     .catch((error) => {
                         console.log(error);
