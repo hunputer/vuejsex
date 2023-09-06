@@ -34,4 +34,10 @@ public class MainApiController {
         return mainService.insertUser(userVO);
     }
 
+    @ResponseBody
+    @PatchMapping("/{id}")
+    public int modifyUser(@PathVariable("id") String id, @RequestBody UserVO userVO) throws Exception{
+        return mainService.deleteUser(id);
+    }
+
 }
