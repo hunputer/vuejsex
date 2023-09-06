@@ -17,9 +17,12 @@ public class MainService {
         return userDAO.getUser();
     }
 
-    public int deleteUser(UserVO userVO) throws Exception{
-        return userDAO.deleteUser(userVO);
+    public int deleteUser(String id) throws Exception{
+        return userDAO.deleteUser(id);
     }
 
+    public int insertUser(UserVO userVO) throws Exception{
+        return userDAO.insertUser(userVO);
+    }
 
 }

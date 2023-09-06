@@ -4,34 +4,32 @@ import com.example.vuejs_ex.service.MainService;
 import com.example.vuejs_ex.vo.UserVO;
 import lombok.RequiredArgsConstructor;
 import org.springframework.stereotype.Controller;
-import org.springframework.web.bind.annotation.DeleteMapping;
-import org.springframework.web.bind.annotation.GetMapping;
-import org.springframework.web.bind.annotation.RequestMapping;
-import org.springframework.web.bind.annotation.ResponseBody;
+import org.springframework.web.bind.annotation.*;
 import org.springframework.web.servlet.ModelAndView;
 
 import java.util.List;
 
 @Controller
 @RequiredArgsConstructor
-@RequestMapping("/service")
+@RequestMapping("/users")
 public class MainApiController {
 
     private final MainService mainService;
 
-    @ResponseBody
-    @GetMapping("/getUser")
-    public List<UserVO> getUser() throws Exception {
-        List<UserVO> userList = mainService.getUser();
+    @GetMapping("")
+    public List<UserVO> getAllUsers() throws Exception {
+        return mainService.getUser();
+    }
 
-        return userList;
+    @DeleteMapping("/{id}")
+    public void deleteUser(@PathVariable("id") String id) throws Exception{
+        mainService.deleteUser(id);
     }
 
     @ResponseBody
-    @DeleteMapping("/deleteUser")
-    public UserVO deleteUser(UserVO userVO) throws Exception{
-        mainService.deleteUser(userVO);
-        return userVO;
+    @PostMapping("")
+    public void insertUser(@RequestBody UserVO userVO) throws Exception{
+        mainService.insertUser(userVO);
     }
 
 }

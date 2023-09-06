@@ -11,6 +11,8 @@ public interface UserDAO {
 
     List<UserVO> getUser();
 
-    int deleteUser(UserVO userVO);
+    int deleteUser(String id);
+
+    int insertUser(UserVO userVO);
 
 }

@@ -12,4 +12,9 @@
         delete from user_test
         where id = #{id}
     </delete>
+
+    <insert id="insertUser">
+        INSERT INTO user_test (name, age)
+        VALUES (#{name}, #{age})
+    </insert>
 </mapper>

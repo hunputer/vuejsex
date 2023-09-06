@@ -45,9 +45,9 @@
 
 <div id="insertModal" class="white-bg" style="display:none;">
     <h4>등록창</h4>
-    <div>아이디 : <textarea></textarea></div>
-    <div>나이 : <textarea></textarea></div>
-    <button v-on:click="">등록</button>
+    <div>아이디 : <textarea id="userId"></textarea></div>
+    <div>나이 : <textarea id="userAge"></textarea></div>
+    <button v-on:click="insertUser">등록</button>
     <button v-on:click="closeModal">닫기</button>
 </div>
 
@@ -73,11 +73,7 @@
             },
             deleteUser(id, event){
                 var vm = this;
-                axios.delete('http://localhost:8080/service/deleteUser', {
-                    params : {
-                        id : id
-                    }
-                })
+                axios.delete('http://localhost:8080/users/'+id)
                     .then((result) => {
                         alert("삭제되었습니다.")
                         this.getUser();
@@ -103,10 +99,17 @@
         },
         methods: {
             insertUser(){
-                var vm = this;
-                axios.get('http://localhost:8080/service/getUser')
+                var id = document.getElementById("userId").value;
+                var age = document.getElementById("userAge").value;
+                axios.delete('http://localhost:8080/service/insertUser', {
+                    params : {
+                        id : id,
+                        age : age
+                    }
+                })
                     .then((result) => {
-                        this.user = result.data;
+                        alert("등록되었습니다.")
+                        this.getUser();
                     })
                     .catch((error) => {
                         console.log(error);
