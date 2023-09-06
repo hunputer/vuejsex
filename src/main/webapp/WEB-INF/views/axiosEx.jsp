@@ -48,7 +48,7 @@
     <div>아이디 : <textarea></textarea></div>
     <div>나이 : <textarea></textarea></div>
     <button v-on:click="">등록</button>
-    <button>닫기</button>
+    <button v-on:click="closeModal">닫기</button>
 </div>
 
 <script>
@@ -97,12 +97,12 @@
     });
 
     var app2 = new Vue({
-        el: "#app",
+        el: "#insertModal",
         data: {
             user : []
         },
         methods: {
-            getUser(){
+            insertUser(){
                 var vm = this;
                 axios.get('http://localhost:8080/service/getUser')
                     .then((result) => {
@@ -114,6 +114,10 @@
                     .finally(() => {
                         console.log("finally");
                     })
+            },
+            closeModal(){
+                document.getElementById("axiosBody").classList.remove("black-bg");
+                document.getElementById("insertModal").style.display = "none";
             }
         }
     });
