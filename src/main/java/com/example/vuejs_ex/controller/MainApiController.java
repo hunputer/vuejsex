@@ -16,20 +16,22 @@ public class MainApiController {
 
     private final MainService mainService;
 
+    @ResponseBody
     @GetMapping("")
     public List<UserVO> getAllUsers() throws Exception {
         return mainService.getUser();
     }
 
+    @ResponseBody
     @DeleteMapping("/{id}")
-    public void deleteUser(@PathVariable("id") String id) throws Exception{
-        mainService.deleteUser(id);
+    public int deleteUser(@PathVariable("id") String id) throws Exception{
+        return mainService.deleteUser(id);
     }
 
     @ResponseBody
     @PostMapping("")
-    public void insertUser(@RequestBody UserVO userVO) throws Exception{
-        mainService.insertUser(userVO);
+    public int insertUser(@RequestBody UserVO userVO) throws Exception{
+        return mainService.insertUser(userVO);
     }
 
 }

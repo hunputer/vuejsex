@@ -60,7 +60,7 @@
         methods: {
             getUser(){
                 var vm = this;
-                axios.get('http://localhost:8080/service/getUser')
+                axios.get('http://localhost:8080/users')
                     .then((result) => {
                         this.user = result.data;
                     })
