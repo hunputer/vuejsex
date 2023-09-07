@@ -21,7 +21,7 @@
             position: fixed; padding: 20px;
         }
         .white-bg {
-            width: 100%; background: white;
+            width: 100%; height:100%; background: white;
             border-radius: 8px;
             padding: 20px;
         }
@@ -30,6 +30,10 @@
             width: 500px;
             height: 700px;
             margin: auto;
+            z-index: 1;
+            position: absolute;
+            top: 10%;
+            left: 35%;
         }
 
         .btnBox{
@@ -93,7 +97,6 @@
         },
         methods: {
             getAllUsers(){
-                var vm = this;
                 axios.get('http://localhost:8080/users')
                     .then((result) => {
                         this.user = result.data;
@@ -106,7 +109,6 @@
                     })
             },
             deleteUser(id, event){
-                var vm = this;
                 axios.delete('http://localhost:8080/users/'+id)
                     .then((result) => {
                         alert("삭제되었습니다.")
@@ -156,9 +158,6 @@
             insertUser(){
                 var name = document.getElementById("userName").value;
                 var age = document.getElementById("userAge").value;
-                var data = new FormData();
-                data.append("name",name);
-                data.append("age", age);
                 axios.post('http://localhost:8080/users', {"name" : name, "age" : age})
                     .then((result) => {
                         alert("등록되었습니다.")
@@ -190,9 +189,6 @@
                 var id = document.getElementById("userid_update").value
                 var name = document.getElementById("userName_update").value;
                 var age = document.getElementById("userAge_update").value;
-                var data = new FormData();
-                data.append("name",name);
-                data.append("age", age);
                 axios.patch('http://localhost:8080/users/'+id, {"name" : name, "age" : age})
                     .then((result) => {
                         alert("수정되었습니다.")
