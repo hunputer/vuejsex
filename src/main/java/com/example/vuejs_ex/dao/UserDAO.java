@@ -9,7 +9,9 @@ import java.util.List;
 @Mapper
 public interface UserDAO {
 
-    List<UserVO> getUser();
+    List<UserVO> getAllUsers();
+
+    UserVO getUser(String id);
 
     int deleteUser(String id);
 

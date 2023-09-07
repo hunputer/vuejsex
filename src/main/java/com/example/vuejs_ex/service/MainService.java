@@ -13,8 +13,12 @@ public class MainService {
 
     private final UserDAO userDAO;
 
-    public List<UserVO> getUser() throws Exception{
-        return userDAO.getUser();
+    public List<UserVO> getAllUsers() throws Exception{
+        return userDAO.getAllUsers();
+    }
+
+    public UserVO getUser(String id) throws Exception{
+        return userDAO.getUser(id);
     }
 
     public int deleteUser(String id) throws Exception{

@@ -58,7 +58,7 @@
     <input id="userid_update" type="hidden">
     <div>아이디 : <textarea id="userName_update"></textarea></div>
     <div>나이 : <textarea id="userAge_update"></textarea></div>
-    <button v-on:click="insertUser">등록</button>
+    <button v-on:click="insertUser">수정</button>
     <button v-on:click="closeUpdateModal">닫기</button>
 </div>
 
@@ -99,7 +99,10 @@
             getUser(id, event){
                 axios.get('http://localhost:8080/users/'+id)
                     .then((result) => {
-                        this.user = result.data;
+                        var data = result.data;
+                        document.getElementById("userName_update").value = data.name;
+                        document.getElementById("userAge_update").value = data.age;
+                        document.getElementById("userid_update").value = data.id;
                     })
                     .catch((error) => {
                         console.log(error);
@@ -113,7 +116,7 @@
                 document.getElementById("insertModal").style.display = "block";
             },
             popUpUpdateForm(id, event){
-
+                this.getUser(id, event)
 
                 document.getElementById("axiosBody").classList.add("black-bg");
                 document.getElementById("updateModal").style.display = "block";
@@ -158,7 +161,7 @@
             user : []
         },
         methods: {
-            insertUser(){
+            updateUser(){
                 var name = document.getElementById("userName").value;
                 var age = document.getElementById("userAge").value;
                 var data = new FormData();

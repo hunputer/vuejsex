@@ -3,9 +3,15 @@
         "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
 
 <mapper namespace="com.example.vuejs_ex.dao.UserDAO">
-    <select id="getUser" resultType="UserVO">
+    <select id="getAllUsers" resultType="UserVO">
         SELECT *
           FROM USER_TEST
+    </select>
+
+    <select id="getUser" resultType="UserVO">
+        SELECT *
+        FROM USER_TEST
+        WHERE id = ${id}
     </select>
 
     <delete id="deleteUser">

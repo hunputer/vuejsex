@@ -19,7 +19,13 @@ public class MainApiController {
     @ResponseBody
     @GetMapping("")
     public List<UserVO> getAllUsers() throws Exception {
-        return mainService.getUser();
+        return mainService.getAllUsers();
+    }
+
+    @ResponseBody
+    @GetMapping("/{id}")
+    public UserVO getUser(@PathVariable("id") String id) throws Exception {
+        return mainService.getUser(id);
     }
 
     @ResponseBody
