@@ -17,4 +17,6 @@ public interface UserDAO {
 
     int insertUser(UserVO userVO);
 
+    int updateUser(UserVO userVO);
+
 }

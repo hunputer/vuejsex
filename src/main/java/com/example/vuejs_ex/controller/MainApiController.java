@@ -43,7 +43,7 @@ public class MainApiController {
     @ResponseBody
     @PatchMapping("/{id}")
     public int modifyUser(@PathVariable("id") String id, @RequestBody UserVO userVO) throws Exception{
-        return mainService.deleteUser(id);
+        return mainService.updateUser(id, userVO);
     }
 
 }

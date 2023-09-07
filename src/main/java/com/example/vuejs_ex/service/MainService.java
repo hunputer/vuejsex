@@ -29,4 +29,9 @@ public class MainService {
         return userDAO.insertUser(userVO);
     }
 
+    public int updateUser(String id, UserVO userVO) throws Exception{
+        userVO.setId(id);
+        return userDAO.updateUser(userVO);
+    }
+
 }

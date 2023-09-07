@@ -23,4 +23,11 @@
         INSERT INTO user_test (name, age)
         VALUES (#{name}, #{age})
     </insert>
+
+    <update id="updateUser">
+        UPDATE user_test
+           SET name = #{name},
+               age = #{age}
+         WHERE id=#{id}
+    </update>
 </mapper>

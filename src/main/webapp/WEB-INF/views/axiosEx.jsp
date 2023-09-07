@@ -7,9 +7,10 @@
     <title>Vue.js</title>
     <script src="https://cdn.jsdelivr.net/npm/vue/dist/vue.js"></script>
     <script src="https://unpkg.com/axios/dist/axios.min.js"></script>
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.1.3/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-1BmE4kWBq78iYhFldvKuhfTAU6auU8tT94WrHftjDbrCEXSU1oBoqyl2QvZ6jIW3" crossorigin="anonymous">
     <style>
         body {
-            margin : 0;
+            margin : 30px;
         }
         div {
             box-sizing: border-box;
@@ -30,18 +31,40 @@
             height: 700px;
             margin: auto;
         }
+
+        .btnBox{
+            margin-bottom: 10px;
+        }
     </style>
 </head>
 <body id="axiosBody">
 <div id="app">
-    <button v-on:click="getAllUsers">get user</button>
-    <button v-on:click="popUpRegForm">추가</button>
-    <br>
-    <div v-for="(data, idx) in user" :key="data.id">
-        <span>{{data.name}}</span>
-        <button v-on:click="popUpUpdateForm(data.id, $event)">등록</button>
-        <button v-on:click="deleteUser(data.id, $event)">삭제</button>
+    <div class="btnBox">
+        <button v-on:click="getAllUsers">get user</button>
+        <button v-on:click="popUpRegForm">추가</button>
     </div>
+    <br>
+    <table class="table table-dark">
+        <thead>
+            <tr>
+                <th scope="col">#</th>
+                <th scope="col">이름</th>
+                <th scope="col">나이</th>
+                <th scope="col"></th>
+            </tr>
+        </thead>
+        <tbody v-for="(data, idx) in user" :key="data.id">
+            <tr>
+                <th>{{idx+1}}</th>
+                <th scope="row">{{data.name}}</th>
+                <td>{{data.age}}</td>
+                <td>
+                    <button v-on:click="popUpUpdateForm(data.id, $event)">수정</button>
+                    <button v-on:click="deleteUser(data.id, $event)">삭제</button>
+                </td>
+            </tr>
+        </tbody>
+    </table>
 </div>
 <br />
 
@@ -58,7 +81,7 @@
     <input id="userid_update" type="hidden">
     <div>아이디 : <textarea id="userName_update"></textarea></div>
     <div>나이 : <textarea id="userAge_update"></textarea></div>
-    <button v-on:click="insertUser">수정</button>
+    <button v-on:click="updateUser">수정</button>
     <button v-on:click="closeUpdateModal">닫기</button>
 </div>
 
@@ -87,7 +110,7 @@
                 axios.delete('http://localhost:8080/users/'+id)
                     .then((result) => {
                         alert("삭제되었습니다.")
-                        this.getUser();
+                        this.getAllUsers();
                     })
                     .catch((error) => {
                         console.log(error);
@@ -139,7 +162,9 @@
                 axios.post('http://localhost:8080/users', {"name" : name, "age" : age})
                     .then((result) => {
                         alert("등록되었습니다.")
-                        app.getUser();
+                        document.getElementById("axiosBody").classList.remove("black-bg");
+                        document.getElementById("insertModal").style.display = "none";
+                        app.getAllUsers();
                     })
                     .catch((error) => {
                         console.log(error);
@@ -162,15 +187,18 @@
         },
         methods: {
             updateUser(){
-                var name = document.getElementById("userName").value;
-                var age = document.getElementById("userAge").value;
+                var id = document.getElementById("userid_update").value
+                var name = document.getElementById("userName_update").value;
+                var age = document.getElementById("userAge_update").value;
                 var data = new FormData();
                 data.append("name",name);
                 data.append("age", age);
-                axios.post('http://localhost:8080/users', {"name" : name, "age" : age})
+                axios.patch('http://localhost:8080/users/'+id, {"name" : name, "age" : age})
                     .then((result) => {
-                        alert("등록되었습니다.")
-                        app.getUser();
+                        alert("수정되었습니다.")
+                        document.getElementById("axiosBody").classList.remove("black-bg");
+                        document.getElementById("updateModal").style.display = "none";
+                        app.getAllUsers();
                     })
                     .catch((error) => {
                         console.log(error);
