@@ -34,13 +34,15 @@ public class ExcelUtil {
 
         // Body
         for (int i=0; i<list.size(); i++) {
+            columnNum = 0;
             row = sheet.createRow(rowNum++);
-            for(Field field : list.get(0).getClass().getDeclaredFields()){
+            for(Field field : list.get(i).getClass().getDeclaredFields()){
                 field.setAccessible(true);
-                Object value = field.get(list.get(0));
+                Object value = field.get(list.get(i));
 
-                cell = row.createCell(0);
+                cell = row.createCell(columnNum);
                 cell.setCellValue((String)value);
+                columnNum += 1;
             }
         }
 
