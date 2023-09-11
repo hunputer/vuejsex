@@ -57,8 +57,9 @@ public class MainApiController {
     @GetMapping("/excel/download")
     public void excelDownload(HttpServletResponse response) throws Exception {
         List<UserVO> list = mainService.getAllUsers();
+        String excelFileName = "고객 정보";
 
-        ExcelUtil.excelDownload(response, list);
+        ExcelUtil.excelDownload(response, list, excelFileName);
 //
     }
 
