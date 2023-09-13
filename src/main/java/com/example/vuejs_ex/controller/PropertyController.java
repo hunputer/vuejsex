@@ -22,8 +22,8 @@ public class PropertyController {
     @GetMapping("")
     public String propertyEx() throws Exception {
 
-        System.out.println(YmlConstants.TEST_NAME);
-        System.out.println(YmlConstants.EXTURN_TEST_NAME);
+        System.out.println(ymlPropertyUtil.getProperty("test.name"));
+        System.out.println(ymlPropertyUtil.getProperty("test.name"));
 
         return "configEx";
     }
