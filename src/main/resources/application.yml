@@ -1,0 +1,32 @@
+spring:
+  jpa:
+    hibernate:
+      ddl-auto: update
+  datasource:
+    driverClassName: org.mariadb.jdbc.Driver
+    url: jdbc:mariadb://localhost:3306/myproject03?allowPublicKeyRetrieval=true&useSSL=false
+    username: jhchoi
+    password: 1234
+  mvc:
+    view:
+      prefix: /WEB-INF/views/
+      suffix: .jsp
+  config:
+    import:
+      - classpath:/dev-config.yml
+
+server:
+  servlet:
+    jsp:
+      init-parameters:development: true
+
+mybatis:
+  type-aliases-package: com.example.vuejs_ex.vo
+  mapper-locations: classpath:mybatis/mapper/**/*.xml
+
+test:
+  name: name
+
+
+
+
