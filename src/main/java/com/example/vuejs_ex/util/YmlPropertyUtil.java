@@ -10,18 +10,18 @@ import org.springframework.context.annotation.Configuration;
 import org.springframework.context.support.GenericXmlApplicationContext;
 import org.springframework.core.env.*;
 import org.springframework.core.io.support.ResourcePropertySource;
+import org.springframework.stereotype.Component;
 
 import java.io.IOException;
 
-@Configuration
+@Component
 @RequiredArgsConstructor
 public class YmlPropertyUtil {
 
     private final Environment environment;
 
-    public String getProperty(String propertyName){
-        AbstractEnvironment abstractEnvironment = new AbstractEnvironment(){};
-        return abstractEnvironment.getProperty(propertyName);
+    public String getProperty(String name){
+        return environment.getProperty(name);
     }
 
 }
