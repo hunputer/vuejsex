@@ -1,4 +1,7 @@
 spring:
+  config:
+    import:
+      - classpath:/dev-config.yml
   jpa:
     hibernate:
       ddl-auto: update
@@ -11,9 +14,6 @@ spring:
     view:
       prefix: /WEB-INF/views/
       suffix: .jsp
-  config:
-    import:
-      - classpath:/dev-config.yml
 
 server:
   servlet:
