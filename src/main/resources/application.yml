@@ -24,8 +24,6 @@ mybatis:
   type-aliases-package: com.example.vuejs_ex.vo
   mapper-locations: classpath:mybatis/mapper/**/*.xml
 
-test:
-  name: name
 
 
 

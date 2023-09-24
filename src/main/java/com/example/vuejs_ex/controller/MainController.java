@@ -48,4 +48,13 @@ public class MainController {
 
         return "axiosEx";
     }
+
+    @GetMapping("/axiosComponent")
+    public String axiosComponentEx(HttpServletRequest request){
+
+        request.setAttribute("var1", "변수1");
+        request.setAttribute("var2", "변수2");
+
+        return "axiosComponent";
+    }
 }
