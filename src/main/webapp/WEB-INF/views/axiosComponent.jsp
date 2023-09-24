@@ -17,9 +17,9 @@
     Vue.component('component1', {
         template : '<div>'
              + '<h1>데이터 템플릿</h1>'
-             + '<span>{{var1}}</span>'
-             + '<span>{{var2}}</span>'
-             + '<span>{{method_test()}}</span>'
+             + '<h3>{{var1}}</h3>'
+             + '<h3>{{var2}}</h3>'
+             + '<h3>{{method_test()}}</h3>'
              + '</div>',
         data : function (){
             const rtn = {
