@@ -57,4 +57,9 @@ public class MainController {
 
         return "axiosComponent";
     }
+
+    @GetMapping("/axiosComponent2")
+    public String axiosComponentEx2(HttpServletRequest request){
+        return "axiosComponent2";
+    }
 }
