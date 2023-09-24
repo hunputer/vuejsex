@@ -10,13 +10,15 @@
 <div id="app1">
     <component1></component1>
     <component2></component2>
+    <conponent v-bind:is="test3"></conponent>
+
 </div>
 <br />
 
 <script>
     Vue.component('component1', {
         template : '<div>'
-             + '<h1>데이터 템플릿</h1>'
+             + '<h1>전역 데이터 템플릿 테스트 입니다.</h1>'
              + '<h3>{{var1}}</h3>'
              + '<h3>{{var2}}</h3>'
              + '<h3>{{method_test()}}</h3>'
@@ -39,9 +41,15 @@
         template : '<h1>지역템플릿 테스트 입니다.</h1>'
     }
 
+    Vue.component('component3', {
+        template : '<div>'
+            + '<h1>동적 컴포넌트 테스트 입니다.</h1>'
+            + '<div>'
+    })
+
     var app1 = new Vue({
         el : '#app1',
-        component : {
+        components : {
             component2 : localComponent
         }
     });
